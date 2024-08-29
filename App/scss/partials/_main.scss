@@ -1,0 +1,10 @@
+@use 'variables' as v;
+.main{
+    hr{
+        border: none;
+        height: 2px;
+        background-color: v.$header-bg-color;
+        margin: 1.5rem;
+    }
+
+}

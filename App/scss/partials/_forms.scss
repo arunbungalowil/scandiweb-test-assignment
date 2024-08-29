@@ -1,0 +1,51 @@
+@use 'variables' as v;
+#product_form {
+  width: 100%;
+  max-width: 1000px; 
+  margin: 0 auto; 
+  padding: 20px;
+  border: 1px solid v.$border-color;
+  border-radius: 8px; 
+
+  .form-group {
+      display: flex; 
+      flex-direction: column;
+      margin-bottom: 1rem; 
+
+      .form-field{
+          display: flex;
+          width: 100%;
+      }
+      
+      label {
+          width: 30%; 
+          margin-right: 10px; 
+          font-weight: bold; 
+          text-align: justify; 
+      }
+
+      input,
+      select {
+          flex: 1; 
+          padding: 10px; 
+          border: 1px solid v.$border-color; 
+          border-radius: 4px;
+          font-size: 16px; 
+      }
+
+      select {
+          width: 100%; 
+      }
+      .error-class{
+          position: relative;
+          text-align: end;
+          right:0.85rem
+          // display: none;
+      }
+  }
+}
+#product-specific{
+  #select-informations{
+      text-align: end;
+  }
+}

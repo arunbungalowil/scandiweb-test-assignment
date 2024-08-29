@@ -1,0 +1,46 @@
+@use 'variables' as v;
+
+.header {
+    background: v.$header-bg-color;
+    color: v.$header-text-color;
+    padding: 1em 0;
+
+    .container {
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    .header-buttons {
+        display: flex;
+
+        button {
+            background-color: v.$primary-button-color;
+            color: white;
+            border: none;
+            padding: 0.5em 1em;
+            margin-left: 0.5em;
+            cursor: pointer;
+            font-size: 1em;
+            border-radius: v.$border-radius;
+            box-shadow: 8px 5px 5px black;
+
+            &:hover {
+                opacity: 0.8;
+            }
+
+            &.mass-delete {
+                background-color: v.$secondary-button-color;
+            }
+            &#cancel-button {
+                background-color: v.$secondary-button-color;
+            }
+        }
+    }
+}

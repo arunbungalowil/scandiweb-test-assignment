@@ -1,0 +1,10 @@
+@use 'variables' as v;
+
+footer {
+    text-align: center;
+    padding: 1em 0;
+    background: v.$header-bg-color;
+    color: v.$header-text-color;
+    font-size: 14px;
+    // margin-bottom: 10px;
+}
