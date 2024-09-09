@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Product</title>
-    <link rel="icon" href="/Public/images/scandiweb_logo.ico" type="image/x-icon">
-    <link rel="stylesheet" href="/Public/CSS/styles.css">
-</head>
+<?php $title = "Add Product";?>
+<?php require __DIR__. '/../layouts/header.php';?>
 
 <body>
     <!-- Header Section -->
@@ -15,7 +8,7 @@
             <h1>Product Add</h1>
             <div class="header-buttons">
                 <button id="save-button" type="submit" form="product_form">Save</button>
-                <button id="cancel-button" type="button">Cancel</button>
+                <a href="/viewproducts"><button id="cancel-button" type="button">Cancel</button></a>
             </div>
         </div>
     </header>
@@ -23,41 +16,45 @@
     <!-- Main Content Section -->
     <main class="main">
          <hr>
-        <form id="product_form" action="submit.php" method="POST">
+        <form id="product_form" action="/save" method="POST">
 
             <div class="form-group">
                 <div class="form-field">
                     <label for="sku">SKU:</label>
-                    <input type="text" id="sku" name="sku" required>
+                    <input type="text" id="sku" name="sku" placeholder = "Please provide sku">
                 </div>
                 <div class="error-class">
-                    <span class="error" id="sku-error">SKU is required</span>
+                    <span class="error" id="sku-error" >Please, submit required data</span>
+                    <?php if(!empty($errors['sku'])) {echo $errors['sku']; } ?>
                 </div>
             </div>
+            <?php $errors['database']?? ''; ?>
             <div class="form-group">
                 <div class="form-field">
                     <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
+                    <input type="text" id="name" name="name" placeholder="Please provide name">
                 </div>
                 <div class="error-class">
-                    <span class="error" id="name-error">Name is required</span> 
+                    <span class="error" id="name-error">Please, submit required data</span> 
+                    <?php if(!empty($errors['name'])) {echo $errors['name']; } ?>
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="form-field">
                     <label for="price">Price ($):</label>
-                    <input type="number" id="price" name="price" required>
+                    <input type="number" id="price" name="price" placeholder="Please provide price in number" >
                 </div>
                 <div class="error-class">
-                    <span class="error" id="price-error">Price is required</span> 
+                    <span class="error" id="price-error">Please, submit required data</span> 
+                    <?php if(!empty($errors['price'])) {echo $errors['price']; } ?>
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="form-field">
                     <label for="productType">Type Switcher:</label>
-                    <select id="productType" name="productType" required>
+                    <select id="productType" name="productType" >
                         <option value="">Type Switcher</option>
                         <option value="DVD" id="DVD">DVD</option>
                         <option value="Book" id="Book">Book</option>
@@ -66,6 +63,7 @@
                 </div>
                 <div class="error-class">
                     <span class="error" id="productType-error">Product type is required</span>
+                    <?php if(!empty($errors['productType'])) {echo $errors['productType']; } ?>
                 </div>
             </div>
 
@@ -74,14 +72,11 @@
                 <!-- Product-specific fields will be dynamically injected here -->
             </section>
         </form>
-        <hr>
     </main>
 
     <!-- Footer Section -->
-    <footer>
-        <p>Scandiweb Test assignment</p>
-    </footer>
-
-    <script src="/Public/JS/productType.js"></script>
-</body>
-</html>
+<?php
+    $includeJs = true;
+    $includeDeleteJs = false;
+    require __DIR__ . '/../layouts/footer.php';
+?>

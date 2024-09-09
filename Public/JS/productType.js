@@ -9,11 +9,15 @@ document.getElementById('productType').addEventListener('change', (event)=>{
          <div class="form-group">
             <div class="form-field">
                 <label for="size">Size (MB)</label>
-                <input type="number" id="size" name="size" required>
+                <input type="number" id="size" name="size" placeholder ="Please provide  size in number">
+            </div>
+            <div class ="select-informations" id = "info">
+                <p>Please, provide size.</p>
             </div>
             <div class="error-class">
-                <p>Please, provide size.</p>
-                <span class="error" id="size-error">Size is required</span>
+                <span class="error" id="size-error">Please, submit required data</span>
+                <?php if(!empty($errors['size'])) {echo $errors['size']; } ?>
+
             </div>   
         </div>
         `;
@@ -22,11 +26,15 @@ document.getElementById('productType').addEventListener('change', (event)=>{
            <div class="form-group">
                 <div class="form-field">
                     <label for="weight">Weight (KG)</label>
-                    <input type="number" id="weight" name="weight" required>
+                    <input type="number" id="weight" name="weight" placeholder ="Please provide  weight in number" >
                 </div>
-                <div class="error-class">
-                    <p>Please, provide weight.</p>
-                    <span class="error" id="weight-error">Weight is required</span>
+                <div class ="select-informations" id = "info">
+                   <p>Please, provide weight.</p>
+                </div>
+                <div class="error-class">     
+                    <span class="error" id="weight-error">Please, submit required data</span>
+                    <?php if(!empty($errors['weight'])) {echo $errors['weight']; } ?>
+
                 </div>   
             </div>
     `;
@@ -35,35 +43,42 @@ document.getElementById('productType').addEventListener('change', (event)=>{
               <div class="form-group">
                 <div class="form-field">
                     <label for="height">Height (CM)</label>
-                    <input type="number" id="height" name="height" required>
+                    <input type="number" id="height" name="height" placeholder ="Please provide height in number" >
                 </div>
                 <div class="error-class">
-                    <span class="error" id="height-error">Height is required</span>
+                    <span class="error" id="height-error">Please, submit required data</span>
+                    <?php if(!empty($errors['height'])) {echo $errors['height']; } ?>
+
                 </div>   
             </div>
 
             <div class="form-group">
                 <div class="form-field">
                     <label for="width">Width (CM)</label>
-                    <input type="number" id="width" name="width" required>
+                    <input type="number" id="width" name="width" placeholder ="Please provide width in number">
                 </div>
                 <div class="error-class">
-                    <span class="error" id="width-error">Width is required</span>
+                    <span class="error" id="width-error">Please, submit required data</span>
+                    <?php if(!empty($errors['width'])) {echo $errors['width']; } ?>
+
                 </div>   
             </div>
 
             <div class="form-group">
                 <div class="form-field">
                     <label for="length">Length (CM)</label>
-                    <input type="number" id="length" name="length" required>
+                    <input type="number" id="length" name="length" placeholder ="Please provide length in number">
                 </div>
                 <div class="error-class">
-                    <span class="error" id="length-error">Length is required</span>
+                    <span class="error" id="length-error">Please, submit required data</span>
+                    <?php if(!empty($errors['length'])) {echo $errors['length']; } ?>
                 </div>   
+
+                <div class ="select-informations" id = "info">
+                    <p>Please, provide dimensions.</p>
+                </div> 
             </div>
-            <div id="select-informations">
-                <p>Please, provide dimensions.</p>
-            </div>  
+         
         `;
     }
 });

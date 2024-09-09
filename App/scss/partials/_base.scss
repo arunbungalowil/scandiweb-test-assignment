@@ -3,14 +3,16 @@
 @use 'reset';
 
 html, body {
-    min-height: 100vh; 
+    height: 100%; 
     margin: 0; 
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.6;
-    padding: 1.4rem; 
     background-color: v.$background-color;
     color: v.$text-color;
 }

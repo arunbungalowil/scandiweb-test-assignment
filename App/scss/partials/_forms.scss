@@ -1,6 +1,6 @@
 @use 'variables' as v;
 #product_form {
-  width: 100%;
+  width: 90%;
   max-width: 1000px; 
   margin: 0 auto; 
   padding: 20px;
@@ -39,13 +39,14 @@
       .error-class{
           position: relative;
           text-align: end;
-          right:0.85rem
-          // display: none;
+          right:0.85rem;
+          color: v.$error-text-color;
+        //   display: none;
       }
   }
 }
 #product-specific{
-  #select-informations{
+  .select-informations{
       text-align: end;
   }
 }

@@ -19,8 +19,10 @@
 
     .header-buttons {
         display: flex;
+        gap: 1rem;
 
         button {
+            width: 100%;
             background-color: v.$primary-button-color;
             color: white;
             border: none;
@@ -34,9 +36,9 @@
             &:hover {
                 opacity: 0.8;
             }
-
             &.mass-delete {
                 background-color: v.$secondary-button-color;
+                // margin-left: 1rem;
             }
             &#cancel-button {
                 background-color: v.$secondary-button-color;
