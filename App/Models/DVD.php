@@ -16,11 +16,15 @@ class DVD extends Product
             'size' => $this->size
         ];
     }
-    public function getSize(){
+    public function getSize()
+    {
         return $this->size;
     }
-    public function validateSpecificData(array $data, array $errors) {
-        if (empty($data['size']) || !is_numeric($data['size']) || $data['size'] <= 0) {
+    public function validateSpecificData(array $data) 
+    {
+        $errors = [];
+        if (empty($data['size']) || !is_numeric($data['size']) || $data['size'] <= 0) 
+        {
             $errors['size'] = 'Size is required for DVDs, must be numeric and must be greater than zero';
         }
         return $errors;
@@ -42,9 +46,11 @@ class DVD extends Product
         $stmt->bindParam(':type', $this->getType());
         $stmt->bindParam(':size', $this->getSize());
 
-        if ($stmt->execute()) {
+        if ($stmt->execute()) 
+        {
             return true; 
-        } else {
+        } else 
+        {
             return false; 
         }
     }

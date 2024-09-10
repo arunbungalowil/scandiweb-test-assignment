@@ -23,23 +23,31 @@ class Furniture extends Product
         ];
     }
 
-    public function getHeight(){
+    public function getHeight()
+    {
         return $this->height;
     }
-    public function getWidth(){
+    public function getWidth()
+    {
         return $this->width;
     }
-    public function getLength(){
+    public function getLength()
+    {
         return $this->length;
     }
-    public function validateSpecificData(array $data, array $errors) {
-        if (empty($data['height']) || !is_numeric($data['height']) || $data['height'] <= 0) {
+    public function validateSpecificData(array $data) 
+    {
+        $errors=[];
+        if (empty($data['height']) || !is_numeric($data['height']) || $data['height'] <= 0) 
+        {
             $errors['height'] = 'Height is required for Furniture, must be numeric and must be greater than zero';
         }
-        if (empty($data['width']) || !is_numeric($data['width']) || $data['width'] <= 0) {
+        if (empty($data['width']) || !is_numeric($data['width']) || $data['width'] <= 0) 
+        {
             $errors['width'] = 'Width is required for Furniture, must be numeric and must be greater than zero';
         }
-        if (empty($data['length']) || !is_numeric($data['length']) || $data['length'] <= 0) {
+        if (empty($data['length']) || !is_numeric($data['length']) || $data['length'] <= 0) 
+        {
             $errors['length'] = 'Length is required for Furniture, must be numeric and must be greater than zero';
         }
         return $errors;
@@ -67,9 +75,11 @@ class Furniture extends Product
         $stmt->bindParam(':length', $this->getLength());
 
 
-        if ($stmt->execute()) {
+        if ($stmt->execute()) 
+        {
             return true; 
-        } else {
+        } else 
+        {
             return false; 
         }
     }

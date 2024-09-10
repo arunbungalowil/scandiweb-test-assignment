@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Models;
-// use App\Models\Product;
 class Book extends Product
 {
     protected $weight;
@@ -16,12 +15,16 @@ class Book extends Product
             'weight' => $this->weight
         ];
     }
-    public function getWeight(){
+    public function getWeight()
+    {
         return $this->weight;
     }
 
-    public function validateSpecificData(array $data ,array $errors) {
-        if (empty($data['weight']) || !is_numeric($data['weight']) || $data['weight'] <= 0) {
+    public function validateSpecificData(array $data) 
+    {
+        $errors=[];
+        if (empty($data['weight']) || !is_numeric($data['weight']) || $data['weight'] <= 0) 
+        {
             $errors['weight'] = 'Weight is required for Books, must be numeric and must be greater than zero';
         }
         return $errors;
@@ -44,9 +47,11 @@ class Book extends Product
         $stmt->bindParam(':type', $this->getType());
         $stmt->bindParam(':weight', $this->getWeight());
 
-        if ($stmt->execute()) {
+        if ($stmt->execute()) 
+        {
             return true; 
-        } else {
+        } else 
+        {
             return false; 
         }
     }

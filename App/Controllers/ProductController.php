@@ -2,7 +2,6 @@
 namespace App\Controllers;
 use App\Models\ProductFactory;
 use App\Helpers\Utilities;
-use App\Models\Database;
 class ProductController
 {
     // Show theproducts in the database
@@ -35,31 +34,38 @@ class ProductController
         $errors = [];  // error are stored in the array.
 
 
-        if (empty($sku) || !preg_match('/^[a-zA-Z0-9\-]+$/', $sku)) {
+        if (empty($sku) || !preg_match('/^[a-zA-Z0-9\-]+$/', $sku)) 
+        {
             $errors['sku'] = 'SKU is required and may contain only letters,numbers, and hyphens.';
         }
-        if (empty($name) || !preg_match('/^[a-zA-Z\s]+$/', $name)) {
+        if (empty($name) || !preg_match('/^[a-zA-Z\s]+$/', $name))
+        {
             $errors['name'] = 'Name is required and may contain only letters,and spaces.';
         }
-        if (empty($price) || !is_numeric($price) || $price <= 0) {
+        if (empty($price) || !is_numeric($price) || $price <= 0) 
+        {
             $errors['price'] = 'Price is required, must be numeric and must be greater than zero';
         }
-        if (empty($productType)) {
+        if (empty($productType)) 
+        {
             $errors['productType'] = 'Product type is required';
         }
 
         $product = ProductFactory::createProduct($productType);
-        $specificData = $product->setSpecificData($_POST);
+        $product->setSpecificData($_POST);
         $getData = $product->getSpecificData();
-        $validationErrors = $product->validateSpecificData($getData,$errors);
+        $validationErrors = $product->validateSpecificData($getData);
+        $fieldSpecificErrors = array_merge($errors,$validationErrors);
 
 
-        if (ProductFactory::skuExists($sku)) {
-            $errors['sku'] = 'SKU already exists';  
+        if (ProductFactory::skuExists($sku)) 
+        {
+            $fieldSpecificErrors['sku'] = 'SKU already exists';  
         }
 
-        if (!empty($errors)) {
-         
+        if (!empty($fieldSpecificErrors)) 
+        {
+            $_POST;
             require __DIR__ . '/../Views/partials/AddProduct.php';
             die();
         }
@@ -69,36 +75,17 @@ class ProductController
         $product->setPrice($price);
         $product->settype($productType);
 
-        if ($product->saveProductToDatabase()) {
+        if ($product->saveProductToDatabase()) 
+        {
             header('Location: /viewproducts');
-        } else {
+        } else 
+        {
             $errors['database'] = 'Failed to save product to database';
             require __DIR__ . '/../Views/partials/AddProduct.php';
         }   
     }
     public function deleteProducts()
     {
-        ob_clean();
-        header('Content-Type: application/json');
-
-        $data = json_decode(file_get_contents('php://input'), true);
-        $ids = isset($data['ids']) ? $data['ids'] : [];
-
-        if (!empty($ids)) {
-            $database = new Database();
-            $connection = $database->getConnection();
-
-            $placeholders = implode(',', array_fill(0, count($ids), '?'));
-            $stmt = $connection->prepare("DELETE FROM products WHERE id IN ($placeholders)");
-
-            if ($stmt->execute($ids)) {
-                echo json_encode(['success' => true]);
-            } else {
-                echo json_encode(['success' => false, 'error' => 'Failed to delete products']);
-            }
-        } else {
-            echo json_encode(['success' => false, 'error' => 'No product IDs provided']);
-        }
-        return;
+        ProductFactory::del();
     }
 }

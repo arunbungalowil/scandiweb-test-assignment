@@ -16,7 +16,7 @@ document.getElementById('productType').addEventListener('change', (event)=>{
             </div>
             <div class="error-class">
                 <span class="error" id="size-error">Please, submit required data</span>
-                <?php if(!empty($errors['size'])) {echo $errors['size']; } ?>
+                <?php if(!empty($fieldSpecificErrors['size'])) {echo $fieldSpecificErrors['size']; } ?>
 
             </div>   
         </div>
@@ -33,7 +33,7 @@ document.getElementById('productType').addEventListener('change', (event)=>{
                 </div>
                 <div class="error-class">     
                     <span class="error" id="weight-error">Please, submit required data</span>
-                    <?php if(!empty($errors['weight'])) {echo $errors['weight']; } ?>
+                    <?php if(!empty($fieldSpecificErrors['weight'])) {echo $fieldSpecificErrors['weight']; } ?>
 
                 </div>   
             </div>
@@ -47,7 +47,7 @@ document.getElementById('productType').addEventListener('change', (event)=>{
                 </div>
                 <div class="error-class">
                     <span class="error" id="height-error">Please, submit required data</span>
-                    <?php if(!empty($errors['height'])) {echo $errors['height']; } ?>
+                    <?php if(!empty($fieldSpecificErrors['height'])) {echo $fieldSpecificErrors['height']; } ?>
 
                 </div>   
             </div>
@@ -59,7 +59,7 @@ document.getElementById('productType').addEventListener('change', (event)=>{
                 </div>
                 <div class="error-class">
                     <span class="error" id="width-error">Please, submit required data</span>
-                    <?php if(!empty($errors['width'])) {echo $errors['width']; } ?>
+                    <?php if(!empty($fieldSpecificErrors['width'])) {echo $fieldSpecificErrors['width']; } ?>
 
                 </div>   
             </div>
@@ -71,7 +71,7 @@ document.getElementById('productType').addEventListener('change', (event)=>{
                 </div>
                 <div class="error-class">
                     <span class="error" id="length-error">Please, submit required data</span>
-                    <?php if(!empty($errors['length'])) {echo $errors['length']; } ?>
+                    <?php if(!fieldSpecificErrors($errors['length'])) {echo $fieldSpecificErrors['length']; } ?>
                 </div>   
 
                 <div class ="select-informations" id = "info">

@@ -11,7 +11,7 @@ $(document).ready(function() {
             contentType: 'application/json',
             data: JSON.stringify({ ids: ids }),
             success: function(response) {
-                console.log('Raw Response:', response);  
+                // console.log('Raw Response:', response);  
                 if (response.success) {
                     location.reload(); 
                    

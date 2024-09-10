@@ -9,7 +9,8 @@ class Database
 
     public function __construct($user = 'root', $pwd = '')
     {
-        try {
+        try 
+        {
             $config = require __DIR__ . '/../Config/database.php';
             $dsn = 'mysql:'.http_build_query($config, '', ';');
 
@@ -17,7 +18,9 @@ class Database
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
             ]);
-        } catch (PDOException $e) {
+        } 
+        catch (PDOException $e) 
+        {
             echo 'Database connection failed: ' . $e->getMessage();
             exit;
         }

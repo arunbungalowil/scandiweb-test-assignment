@@ -21,33 +21,33 @@
             <div class="form-group">
                 <div class="form-field">
                     <label for="sku">SKU:</label>
-                    <input type="text" id="sku" name="sku" placeholder = "Please provide sku">
+                    <input type="text" id="sku" name="sku" placeholder = "Please provide sku" value="<?= $_POST['sku'] ?? ''; ?>">
                 </div>
                 <div class="error-class">
                     <span class="error" id="sku-error" >Please, submit required data</span>
-                    <?php if(!empty($errors['sku'])) {echo $errors['sku']; } ?>
+                    <?php if(!empty($fieldSpecificErrors['sku'])) {echo $fieldSpecificErrors['sku']; } ?>
                 </div>
             </div>
             <?php $errors['database']?? ''; ?>
             <div class="form-group">
                 <div class="form-field">
                     <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" placeholder="Please provide name">
+                    <input type="text" id="name" name="name" placeholder="Please provide name" value="<?= $_POST['name'] ?? ''; ?>">
                 </div>
                 <div class="error-class">
                     <span class="error" id="name-error">Please, submit required data</span> 
-                    <?php if(!empty($errors['name'])) {echo $errors['name']; } ?>
+                    <?php if(!empty($fieldSpecificErrors['name'])) {echo $fieldSpecificErrors['name']; } ?>
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="form-field">
                     <label for="price">Price ($):</label>
-                    <input type="number" id="price" name="price" placeholder="Please provide price in number" >
+                    <input type="number" id="price" name="price" placeholder="Please provide price in number" value="<?= $_POST['price'] ?? ''; ?>">
                 </div>
                 <div class="error-class">
                     <span class="error" id="price-error">Please, submit required data</span> 
-                    <?php if(!empty($errors['price'])) {echo $errors['price']; } ?>
+                    <?php if(!empty($fieldSpecificErrors['price'])) {echo $fieldSpecificErrors['price']; } ?>
                 </div>
             </div>
 
@@ -63,7 +63,7 @@
                 </div>
                 <div class="error-class">
                     <span class="error" id="productType-error">Product type is required</span>
-                    <?php if(!empty($errors['productType'])) {echo $errors['productType']; } ?>
+                    <?php if(!empty($fieldSpecificErrors['productType'])) {echo $fieldSpecificErrors['productType']; } ?>
                 </div>
             </div>
 

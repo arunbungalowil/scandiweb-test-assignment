@@ -1,6 +1,6 @@
 <?php
 return [
     'host' => 'localhost',
-    'dbname'   => 'scandiweb-test',
+    'dbname'   => 'scandi-test',
     'charset' => 'UTF8'
 ];

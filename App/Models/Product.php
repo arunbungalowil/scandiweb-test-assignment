@@ -12,7 +12,7 @@ abstract class Product
 
     abstract public function setSpecificData(array $data);
     abstract public function getSpecificData();
-    abstract public function validateSpecificData(array $data, array $errors);
+    abstract public function validateSpecificData(array $data);
     abstract public function saveProductToDatabase();
 
     public function __construct()
@@ -21,36 +21,46 @@ abstract class Product
        $this->databaseConnection = $this->databaseObject->getConnection();
     }
 
-    public function setId($id){
+    public function setId($id)
+    {
         $this->id = $id;
     }
  
-    public function setSku($sku){
+    public function setSku($sku)
+    {
         $this->sku = $sku;
     }
-    public function setName($name){
+    public function setName($name)
+    {
         $this->name = $name;
     }
-    public function setPrice($price){
+    public function setPrice($price)
+    {
         $this->price = $price;
     }
 
-    public function setType($type){
+    public function setType($type)
+    {
         $this->type = $type;
     }
-    public function getId(){
+    public function getId()
+    {
         return $this->id;
     } 
-   public function getSku(){
+   public function getSku()
+   {
         return $this->sku;
     } 
-    public function getName(){
+    public function getName()
+    {
         return $this->name;
     } 
-    public function getPrice(){
+    public function getPrice()
+    {
         return $this->price;
     } 
-    public function getType(){
+    public function getType()
+    {
         return $this->type;
     } 
 
