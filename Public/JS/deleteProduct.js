@@ -5,10 +5,6 @@ $(document).ready(function() {
             ids.push($(this).val());
         });
 
-        if (ids.length === 0) {
-            alert("No products selected for deletion.");
-            return;
-        }
         $.ajax({
             url: '/deleteproducts',
             type: 'POST',
@@ -18,13 +14,13 @@ $(document).ready(function() {
                 console.log('Raw Response:', response);  
                 if (response.success) {
                     location.reload(); 
+                   
                 } else {
-                    alert('Failed to delete products: ' + (response.error || 'Unknown error'));
+                    $('#error-message').text('Failed to delete products: ' + (response.error || 'Unknown error')).show();
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                console.log('AJAX Error:', textStatus, errorThrown); // Log details of the error
-                alert('An error occurred while sending the request: ' + textStatus);
+                $('#error-message').text('AJAX Error: ' + textStatus + ' - ' + errorThrown).show();
             }
         });
     });

@@ -4,6 +4,7 @@
 <body>
     <!-- Header Section -->
     <header class="header">
+        <div id="error-message" style="color: red;"></div>
         <div class="container">
             <h1>Product List</h1>
             <div class="header-buttons">
@@ -21,7 +22,6 @@
                 <div class="product-card" >
                     <input type="checkbox" class="delete-checkbox" value = "<?php echo htmlspecialchars($product->getId()); ?>">
                     <div class="product-info">
-                        <p><?php echo $product->getId(); ?></p>
                         <p> <?php echo htmlspecialchars($product->getSku());?> </p>
                         <p> <?php echo htmlspecialchars($product->getName()); ?> </p>
                         <p> <?php echo htmlspecialchars($product->getPrice()). ' $'; ?> </p>
